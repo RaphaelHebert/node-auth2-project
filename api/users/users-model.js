@@ -1,6 +1,9 @@
+const Helper = require('../../data/db-helper.js');
 const db = require('../../data/db-config.js');
 
-function find() {
+async function find() {
+  const res = await Helper.dbFindAll()
+  return res
   /**
     You will need to join two tables.
     Resolves to an ARRAY with all users.
@@ -20,7 +23,9 @@ function find() {
    */
 }
 
-function findBy(filter) {
+async function findBy(filter) {
+  const res = await Helper.dbFindBy(filter)
+  return res
   /**
     You will need to join two tables.
     Resolves to an ARRAY with all users that match the filter condition.
@@ -36,7 +41,9 @@ function findBy(filter) {
    */
 }
 
-function findById(user_id) {
+async function findById(user_id) {
+  const res = await Helper.dbFindById(user_id).first()
+  return res
   /**
     You will need to join two tables.
     Resolves to the user with the given user_id.
